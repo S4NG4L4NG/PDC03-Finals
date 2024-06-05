@@ -2,81 +2,244 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Module06MVVM.LandingPage"
-             xmlns:local="clr-namespace:Module06MVVM">
-    <ContentPage Title="Recycle Game">
-        <StackLayout Padding="20">
-            <Label Text="Drag recyclables into the correct bins" 
-             VerticalOptions="Start" 
-             HorizontalOptions="Center" 
-             FontSize="Large" />
-            <Grid VerticalOptions="CenterAndExpand" RowDefinitions="Auto, Auto, Auto">
-                <!-- Placeholder for bins -->
-                <Image x:Name="PaperBin" Source="paper_bin.png" Grid.Row="1" Grid.Column="0" HeightRequest="100" WidthRequest="100"/>
-                <Image x:Name="PlasticBin" Source="plastic_bin.png" Grid.Row="1" Grid.Column="1" HeightRequest="100" WidthRequest="100"/>
-                <Image x:Name="GlassBin" Source="glass_bin.png" Grid.Row="1" Grid.Column="2" HeightRequest="100" WidthRequest="100"/>
-                <!-- Placeholder for recyclables -->
-                <Image x:Name="PaperItem" Source="paper_item.png" Grid.Row="0" Grid.Column="0" HeightRequest="100" WidthRequest="100" Margin="0,20,0,0"/>
-                <Image x:Name="PlasticItem" Source="plastic_item.png" Grid.Row="0" Grid.Column="1" HeightRequest="100" WidthRequest="100" Margin="20,20,20,0"/>
-                <Image x:Name="GlassItem" Source="glass_item.png" Grid.Row="0" Grid.Column="2" HeightRequest="100" WidthRequest="100" Margin="0,20,0,0"/>
-            </Grid>
-            <Button Text="Reset Game" Clicked="OnResetRecyclingGameClicked" VerticalOptions="End"/>
-            <Button Text="Go to ShowEmployeePage" Clicked="OnButtonClicked" VerticalOptions="End" />
-        </StackLayout>
+             xmlns:local="clr-namespace:Module06MVVM" Title="Gamia">
+    <ContentPage Title="Recycle Game" BackgroundColor="#E8F5E9">
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <Style x:Key="RecycleButtonStyle" TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="#4CAF50" />
+                    <Setter Property="TextColor" Value="White" />
+                    <Setter Property="CornerRadius" Value="10" />
+                    <Setter Property="BorderColor" Value="#2E7D32" />
+                    <Setter Property="BorderWidth" Value="2" />
+                    <Setter Property="FontAttributes" Value="Bold" />
+                    <Setter Property="Margin" Value="0,10,0,10" />
+                </Style>
+                <Style x:Key="LabelStyle" TargetType="Label">
+                    <Setter Property="TextColor" Value="#1B5E20" />
+                    <Setter Property="FontAttributes" Value="Bold" />
+                    <Setter Property="FontSize" Value="Large" />
+                    <Setter Property="HorizontalOptions" Value="Center" />
+                    <Setter Property="Margin" Value="0,20,0,20" />
+                </Style>
+            </ResourceDictionary>
+        </ContentPage.Resources>
+
+        <AbsoluteLayout>
+            <!-- Background Image -->
+            <Image Source="trees_background.jpg"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+               AbsoluteLayout.LayoutFlags="All" />
+
+            <!-- Main Content -->
+            <StackLayout Padding="20"
+                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                     AbsoluteLayout.LayoutFlags="All"
+                     BackgroundColor="#E8F5E9" Opacity="0.9">
+                <!-- Title -->
+                <Label Text="Always put the right trash to the right bin"
+                   Style="{StaticResource LabelStyle}" />
+
+                <!-- Grid for Bins and Items -->
+                <Grid VerticalOptions="CenterAndExpand" Margin="0,20,0,0">
+                    <!-- Bins -->
+                    <Image x:Name="PaperBin" Source="paper_bin.png" Grid.Row="1" Grid.Column="0" HeightRequest="100" WidthRequest="100"/>
+                    <Image x:Name="PlasticBin" Source="plastic_bin.png" Grid.Row="1" Grid.Column="1" HeightRequest="100" WidthRequest="100"/>
+                    <Image x:Name="GlassBin" Source="glass_bin.png" Grid.Row="1" Grid.Column="2" HeightRequest="100" WidthRequest="100"/>
+                    <!-- Recyclables -->
+                    <Image x:Name="PaperItem" Source="paper_item.png" Grid.Row="0" Grid.Column="0" HeightRequest="100" WidthRequest="100" Margin="0,20,0,0"/>
+                    <Image x:Name="PlasticItem" Source="plastic_item.png" Grid.Row="0" Grid.Column="1" HeightRequest="100" WidthRequest="100" Margin="20,20,20,0"/>
+                    <Image x:Name="GlassItem" Source="glass_item.png" Grid.Row="0" Grid.Column="2" HeightRequest="100" WidthRequest="100" Margin="0,20,0,0"/>
+                </Grid>
+
+                <!-- Reset Game Button -->
+                <Button Text="Reset Game"
+                    Clicked="OnResetRecyclingGameClicked"
+                    Style="{StaticResource RecycleButtonStyle}"
+                    VerticalOptions="End" />
+
+                <!-- Go to Show Employee Page Button -->
+                <Button Text="Apply now to save our planet"
+                    Clicked="OnButtonClicked"
+                    Style="{StaticResource RecycleButtonStyle}"
+                    VerticalOptions="End" />
+            </StackLayout>
+        </AbsoluteLayout>
     </ContentPage>
 
-    <ContentPage Title="Quiz Game">
-        <StackLayout Padding="20">
-            <Label Text="Environmental Quiz" 
-             VerticalOptions="Start" 
-             HorizontalOptions="Center" 
-             FontSize="Large" />
-            <Label x:Name="QuestionLabel" Text="Question: What is the most effective way to reduce waste?" 
-             VerticalOptions="Start" 
-             HorizontalOptions="Center" 
-             FontSize="Medium" />
-            <Button x:Name="AnswerButton1" Text="Reduce" Clicked="OnQuizAnswerClicked" Margin="10"/>
-            <Button x:Name="AnswerButton2" Text="Reuse" Clicked="OnQuizAnswerClicked" Margin="10"/>
-            <Button x:Name="AnswerButton3" Text="Recycle" Clicked="OnQuizAnswerClicked" Margin="10"/>
-            <Label x:Name="QuizResultLabel" 
-             VerticalOptions="Start" 
-             HorizontalOptions="Center" 
-             FontSize="Medium" 
-             IsVisible="False"/>
-            <Label x:Name="QuizScoreLabel" 
-             VerticalOptions="Start" 
-             HorizontalOptions="Center" 
-             FontSize="Medium"/>
-            <Button Text="Apply to save our Planet" 
-              Clicked="OnButtonClicked"
-              VerticalOptions="End" />
-        </StackLayout>
+    <ContentPage Title="Quiz Game" BackgroundColor="#E8F5E9">
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <Style x:Key="QuizButtonStyle" TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="#4CAF50" />
+                    <Setter Property="TextColor" Value="White" />
+                    <Setter Property="CornerRadius" Value="10" />
+                    <Setter Property="BorderColor" Value="#2E7D32" />
+                    <Setter Property="BorderWidth" Value="2" />
+                </Style>
+                <Style x:Key="QuizButtonStyleAlt" TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="#81C784" />
+                    <Setter Property="TextColor" Value="White" />
+                    <Setter Property="CornerRadius" Value="10" />
+                    <Setter Property="BorderColor" Value="#388E3C" />
+                    <Setter Property="BorderWidth" Value="2" />
+                </Style>
+                <Style x:Key="QuizButtonStyleThird" TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="#66BB6A" />
+                    <Setter Property="TextColor" Value="White" />
+                    <Setter Property="CornerRadius" Value="10" />
+                    <Setter Property="BorderColor" Value="#43A047" />
+                    <Setter Property="BorderWidth" Value="2" />
+                </Style>
+            </ResourceDictionary>
+        </ContentPage.Resources>
+        <AbsoluteLayout>
+            <!-- Background Image -->
+            <Image Source="trees_background.jpg"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+               AbsoluteLayout.LayoutFlags="All" />
+
+            <!-- Main Content -->
+            <StackLayout Padding="20"
+                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                     AbsoluteLayout.LayoutFlags="All"
+                     BackgroundColor="#E8F5E9" Opacity="0.9">
+                <Label Text="Environmental Quiz"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   TextColor="#1B5E20" />
+                <Label x:Name="QuestionLabel" Text="Question: What is the most effective way to reduce waste?"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"
+                   FontSize="Medium"
+                   TextColor="#2E7D32" />
+                <Button x:Name="AnswerButton1" Text="Reduce"
+                    Clicked="OnQuizAnswerClicked"
+                    Margin="10"
+                    Style="{StaticResource QuizButtonStyle}" />
+                <Button x:Name="AnswerButton2" Text="Reuse"
+                    Clicked="OnQuizAnswerClicked"
+                    Margin="10"
+                    Style="{StaticResource QuizButtonStyleAlt}" />
+                <Button x:Name="AnswerButton3" Text="Recycle"
+                    Clicked="OnQuizAnswerClicked"
+                    Margin="10"
+                    Style="{StaticResource QuizButtonStyleThird}" />
+
+                <!-- Score and Result Labels Side by Side -->
+                <Grid HorizontalOptions="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="QuizResultLabel"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Center"
+                       FontSize="Medium"
+                       IsVisible="False"
+                       TextColor="#388E3C"
+                       Grid.Column="0" />
+                    <Label x:Name="QuizScoreLabel"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Center"
+                       FontSize="Medium"
+                       TextColor="#1B5E20"
+                       Grid.Column="1"
+                       Margin="10,0,0,0" />
+                </Grid>
+
+                <Image Source="logo.png"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"
+                   WidthRequest="200"
+                   HeightRequest="200"
+                   Margin="10" />
+                <Button Text="Apply now to save our planet"
+                    Clicked="OnButtonClicked"
+                    VerticalOptions="End"
+                    Style="{StaticResource QuizButtonStyleThird}" />
+            </StackLayout>
+        </AbsoluteLayout>
     </ContentPage>
 
-    <ContentPage Title="Tap the Tree">
-        <StackLayout Padding="20">
-            <Label Text="Tap to move the tree" 
-             VerticalOptions="Start" 
-             HorizontalOptions="Center" 
-             FontSize="Large" />
-            <Image x:Name="TreeImage" Source="tree.png" 
-             VerticalOptions="CenterAndExpand" 
-             HorizontalOptions="Center" 
-             HeightRequest="100" WidthRequest="100">
-            </Image>
-            <Button Text="Grow Tree" 
-              Clicked="OnGrowTreeClicked" 
-              VerticalOptions="End"/>
-            <Label x:Name="TreeCountLabel" 
-             Text="0" 
-             VerticalOptions="End" 
-             HorizontalOptions="Center" 
-             FontSize="Medium"/>
-            <Button Text="Reset Tree" 
-              Clicked="OnResetTreeClicked" 
-              VerticalOptions="End"/>
-            <Button Text="Apply to save our Planet" 
-               Clicked="OnButtonClicked"
-               VerticalOptions="End" />
-        </StackLayout>
+
+
+
+    <ContentPage Title="Tap the Tree" BackgroundColor="#E8F5E9">
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <Style x:Key="TreeButtonStyle" TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="#4CAF50" />
+                    <Setter Property="TextColor" Value="White" />
+                    <Setter Property="CornerRadius" Value="10" />
+                    <Setter Property="BorderColor" Value="#2E7D32" />
+                    <Setter Property="BorderWidth" Value="2" />
+                    <Setter Property="FontAttributes" Value="Bold" />
+                    <Setter Property="Margin" Value="0,10,0,10" />
+                </Style>
+                <Style x:Key="LabelStyle" TargetType="Label">
+                    <Setter Property="TextColor" Value="#2E7D32" />
+                    <Setter Property="FontAttributes" Value="Bold" />
+                </Style>
+            </ResourceDictionary>
+        </ContentPage.Resources>
+
+        <AbsoluteLayout>
+            <!-- Background Image -->
+            <Image Source="trees_background.jpg"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+               AbsoluteLayout.LayoutFlags="All" />
+
+            <!-- Main Content -->
+            <StackLayout Padding="20"
+                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                     AbsoluteLayout.LayoutFlags="All"
+                     BackgroundColor="#E8F5E9" Opacity="0.9">
+                
+               
+                <Label Text="Help us to create more trees!"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   TextColor="#1B5E20"
+                   Margin="0,20,0,10" />
+
+                <Image x:Name="TreeImage" Source="tree.png"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="Center"
+                   HeightRequest="100"
+                   WidthRequest="100"
+                   Margin="0,20,0,20" />
+
+                <Button Text="Grow Tree"
+                    Clicked="OnGrowTreeClicked"
+                    Style="{StaticResource TreeButtonStyle}"
+                    VerticalOptions="End" />
+
+                <Label x:Name="TreeCountLabel"
+                   Text="0"
+                   VerticalOptions="End"
+                   HorizontalOptions="Center"
+                   FontSize="Medium"
+                   Style="{StaticResource LabelStyle}" />
+
+                <Button Text="Reset Tree"
+                    Clicked="OnResetTreeClicked"
+                    Style="{StaticResource TreeButtonStyle}"
+                    VerticalOptions="End" />
+
+                <Button Text="Apply now to save our planet"
+                    Clicked="OnButtonClicked"
+                    Style="{StaticResource TreeButtonStyle}"
+                    VerticalOptions="End" />
+            </StackLayout>
+        </AbsoluteLayout>
     </ContentPage>
+
 </TabbedPage>

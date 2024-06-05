@@ -107,5 +107,20 @@
     <AndroidResource Include="Resources\drawable\glass_item.png" />
     <AndroidResource Include="Resources\drawable\glass_bin.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\trees_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\category_icon.png" />
+    <AndroidResource Include="Resources\drawable\action_code_icon.png" />
+    <AndroidResource Include="Resources\drawable\description_icon.png" />
+    <AndroidResource Include="Resources\drawable\earth.png" />
+    <AndroidResource Include="Resources\drawable\frequency_icon.png" />
+    <Content Include="Resources\drawable\globe-16.png" />
+    <AndroidResource Include="Resources\drawable\impact_level_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

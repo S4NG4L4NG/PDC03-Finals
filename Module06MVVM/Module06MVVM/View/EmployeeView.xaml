@@ -1,57 +1,94 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Module06MVVM.View.EmployeeView">
-  <ContentPage.Resources>
-    <ResourceDictionary>
-      <Color x:Key="GreenColor">#C8E6C9</Color>
-    </ResourceDictionary>
-  </ContentPage.Resources>
-  <ContentPage.Content>
-    <StackLayout BackgroundColor="{StaticResource GreenColor}" Padding="20">
-      <Label Text="ID" TextColor="White" FontSize="16" />
-      <Label Text="Action Code" TextColor="White" FontSize="16" />
-      <Entry x:Name="txtActionCode" Placeholder="Input Action Code" />
+             x:Class="Module06MVVM.View.EmployeeView" Title="Please input in this forms">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="LightGreenColor">#C8E6C9</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
 
-      <Label Text="Description" TextColor="White" FontSize="16" />
-      <Entry x:Name="txtDescription" Placeholder="Enter Description" />
+        <StackLayout BackgroundColor="#8fbc8f" Padding="10">
 
-      <Label Text="Impact Level" TextColor="White" FontSize="16" />
-      <Picker x:Name="txtImpactLevel" Title="How much will this impact the environment">
-        <Picker.ItemsSource>
-          <x:Array Type="{x:Type x:String}">
-            <x:String>Low</x:String>
-            <x:String>Medium</x:String>
-            <x:String>High</x:String>
-            <x:String>Extreme</x:String>
-          </x:Array>
-        </Picker.ItemsSource>
-      </Picker>
+            <Image Source="logo.png" HeightRequest="240" WidthRequest="240" HorizontalOptions="Center" VerticalOptions="Start"/>
 
-      <Label Text="Category" TextColor="White" FontSize="16" />
-      <Picker x:Name="txtCategory" Title="Select Category">
-        <Picker.ItemsSource>
-          <x:Array Type="{x:Type x:String}">
-            <x:String>Energy and Electricity</x:String>
-            <x:String>Water</x:String>
-            <x:String>Plants and Trees</x:String>
-            <x:String>Air pollution</x:String>
-          </x:Array>
-        </Picker.ItemsSource>
-      </Picker>
+            <Frame BorderColor="Green" CornerRadius="25" Padding="10" BackgroundColor="#C8E6C9">
+                <StackLayout Padding="20" Spacing="15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="action_code_icon.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Entry x:Name="txtActionCode" Placeholder="Input Action Code" Grid.Column="1"/>
+                    </Grid>
 
-      <Label Text="Frequency" TextColor="White" FontSize="16" />
-      <Picker x:Name="txtFrequency" Title="Select Frequency">
-        <Picker.ItemsSource>
-          <x:Array Type="{x:Type x:String}">
-            <x:String>Daily</x:String>
-            <x:String>Weekly</x:String>
-            <x:String>Monthly</x:String>
-            <x:String>Yearly</x:String>
-          </x:Array>
-        </Picker.ItemsSource>
-      </Picker>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="description_icon.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Entry x:Name="txtDescription" Placeholder="Enter Description" Grid.Column="1"/>
+                    </Grid>
 
-      <Button Text="Save Record" Clicked="btnSaveUpdate_Clicked" BackgroundColor="White" TextColor="{StaticResource GreenColor}" FontSize="18" CornerRadius="5" Margin="0,20,0,0" />
-    </StackLayout>
-  </ContentPage.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="impact_level_icon.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Picker x:Name="txtImpactLevel" Title="Impact" Grid.Column="1">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Low</x:String>
+                                    <x:String>Medium</x:String>
+                                    <x:String>High</x:String>
+                                    <x:String>Extreme</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="category_icon.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Picker x:Name="txtCategory" Title="Select Category" Grid.Column="1">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Energy and Electricity</x:String>
+                                    <x:String>Water</x:String>
+                                    <x:String>Plants and Trees</x:String>
+                                    <x:String>Air pollution</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="frequency_icon.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Picker x:Name="txtFrequency" Title="Select Frequency" Grid.Column="1">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Daily</x:String>
+                                    <x:String>Weekly</x:String>
+                                    <x:String>Monthly</x:String>
+                                    <x:String>Yearly</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Grid>
+
+                    <Button Text="Save Record" Clicked="btnSaveUpdate_Clicked" BackgroundColor="#228b22" TextColor="white" FontSize="18" CornerRadius="15" BorderColor="white" Margin="0,20,0,0" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

@@ -2,36 +2,44 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Module06MVVM.View.ShowEmployeePage"
-             BackgroundColor="#e8f5e9">
+             BackgroundColor="#52b69a">
     <ContentPage.Content>
+        
+        
         <StackLayout Padding="20" Spacing="15">
             <!-- Title and Logo -->
             <StackLayout HorizontalOptions="Center" Spacing="10">
-                <Image Source="leaf_logo.png" HeightRequest="100" WidthRequest="100" />
-                <Label Text="Employee Records" TextColor="Green" FontAttributes="Bold" FontSize="Large"/>
+                <!-- Logo -->
+                <Image Source="logo.png" HeightRequest="100" WidthRequest="100" />
+
+                <!-- Title -->
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="earth.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center"/>
+                    <Label Text="Help us save the planet" TextColor="White" FontAttributes="Bold" FontSize="Large" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                </StackLayout>
             </StackLayout>
 
             <!-- Grid Header -->
-            <Grid Padding="10" BackgroundColor="#e8f5e9">
+            <Grid Padding="10" BackgroundColor="#52b69a">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Label Text="Action Code" Grid.Row="0" Grid.Column="0" TextColor="Green" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                <Label Text="Description" Grid.Row="0" Grid.Column="1" TextColor="Green" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                <Label Text="Impact Level" Grid.Row="0" Grid.Column="2" TextColor="Green" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                <Label Text="Category" Grid.Row="0" Grid.Column="3" TextColor="Green" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                <Label Text="Frequency" Grid.Row="0" Grid.Column="4" TextColor="Green" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="Action Code" Grid.Row="0" Grid.Column="0" TextColor="#d9ed92" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="Description" Grid.Row="0" Grid.Column="1" TextColor="#d9ed92" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="Impact Level" Grid.Row="0" Grid.Column="2" TextColor="#d9ed92" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="Category" Grid.Row="0" Grid.Column="3" TextColor="#d9ed92" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="Frequency" Grid.Row="0" Grid.Column="4" TextColor="#d9ed92" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             </Grid>
 
             <!-- ListView for Data -->
-            <ListView x:Name="lstData" HasUnevenRows="True" ItemSelected="lsdata_ItemSelected" BackgroundColor="#e8f5e9">
+            <ListView x:Name="lstData" HasUnevenRows="True" ItemSelected="lsdata_ItemSelected" BackgroundColor="#52b69a">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -60,7 +68,7 @@
             </ListView>
 
             <!-- Add New Record Button -->
-            <Button Text="Add New Record" Clicked="btnAddRecord" BackgroundColor="Green" TextColor="White" CornerRadius="10"/>
+            <Button Text="Join Now!" Clicked="btnAddRecord" BackgroundColor="Green" TextColor="White" CornerRadius="10"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
