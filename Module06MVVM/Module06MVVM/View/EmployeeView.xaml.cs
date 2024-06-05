@@ -55,6 +55,17 @@ namespace Module06MVVM.View
         }
         private async void btnSaveUpdate_Clicked(object sender, EventArgs e) 
         {
+
+            if (string.IsNullOrWhiteSpace(txtActionCode.Text) ||
+               string.IsNullOrWhiteSpace(txtDescription.Text) ||
+               txtImpactLevel.SelectedItem == null ||
+               txtCategory.SelectedItem == null ||
+               txtFrequency.SelectedItem == null)
+            {
+                await DisplayAlert("Validation Error", "All fields are required.", "OK");
+                return;
+            }
+
             EmployeeModel obj = new EmployeeModel();
             obj.ActionCode = txtActionCode.Text;
             obj.Description = txtDescription.Text;

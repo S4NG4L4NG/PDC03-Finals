@@ -11,6 +11,10 @@ namespace Module06MVVM
             InitializeComponent();
 
             MainPage = new NavigationPage(new LandingPage());
+            {
+
+            };
+
         }
 
         protected override void OnStart()
