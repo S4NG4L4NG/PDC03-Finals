@@ -33,7 +33,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <BundleAssemblies>false</BundleAssemblies>
+    <AndroidLinkTool>r8</AndroidLinkTool>
+    <MandroidI18n />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -85,27 +91,10 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\plastic_item.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Module06MVVM\Module06MVVM.csproj">
       <Project>{AEACA958-54FD-4FC5-96A0-C87E1D2E4559}</Project>
       <Name>Module06MVVM</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\paper_bin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\tree.png" />
-    <AndroidResource Include="Resources\drawable\paper_item.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\plastic_bin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\glass_item.png" />
-    <AndroidResource Include="Resources\drawable\glass_bin.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\trees_background.jpg" />
@@ -119,8 +108,15 @@
     <AndroidResource Include="Resources\drawable\description_icon.png" />
     <AndroidResource Include="Resources\drawable\earth.png" />
     <AndroidResource Include="Resources\drawable\frequency_icon.png" />
+    <AndroidResource Include="Resources\drawable\glass_bin.png" />
+    <AndroidResource Include="Resources\drawable\glass_item.png" />
     <Content Include="Resources\drawable\globe-16.png" />
     <AndroidResource Include="Resources\drawable\impact_level_icon.png" />
+    <AndroidResource Include="Resources\drawable\paper_bin.png" />
+    <AndroidResource Include="Resources\drawable\paper_item.png" />
+    <AndroidResource Include="Resources\drawable\plastic_bin.png" />
+    <AndroidResource Include="Resources\drawable\plastic_item.png" />
+    <AndroidResource Include="Resources\drawable\tree.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

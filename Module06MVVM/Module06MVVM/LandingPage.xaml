@@ -26,31 +26,41 @@
         </ContentPage.Resources>
 
         <AbsoluteLayout>
+           
             <!-- Background Image -->
             <Image Source="trees_background.jpg"
                Aspect="AspectFill"
                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                AbsoluteLayout.LayoutFlags="All" />
 
+            
+
             <!-- Main Content -->
             <StackLayout Padding="20"
                      AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                      AbsoluteLayout.LayoutFlags="All"
                      BackgroundColor="#E8F5E9" Opacity="0.9">
+                
                 <!-- Title -->
-                <Label Text="Always put the right trash to the right bin"
-                   Style="{StaticResource LabelStyle}" />
+                <Label Text="Always put the right trash into the right bin"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   TextColor="#1B5E20"
+                   Margin="0,20,0,10" />
+                
 
                 <!-- Grid for Bins and Items -->
                 <Grid VerticalOptions="CenterAndExpand" Margin="0,20,0,0">
                     <!-- Bins -->
-                    <Image x:Name="PaperBin" Source="paper_bin.png" Grid.Row="1" Grid.Column="0" HeightRequest="100" WidthRequest="100"/>
-                    <Image x:Name="PlasticBin" Source="plastic_bin.png" Grid.Row="1" Grid.Column="1" HeightRequest="100" WidthRequest="100"/>
-                    <Image x:Name="GlassBin" Source="glass_bin.png" Grid.Row="1" Grid.Column="2" HeightRequest="100" WidthRequest="100"/>
+                    <Image x:Name="PaperBin" Source="paper_bin.png" Grid.Row="2" Grid.Column="0" HeightRequest="50" WidthRequest="50"/>
+                    <Image x:Name="PlasticBin" Source="plastic_bin.png" Grid.Row="2" Grid.Column="1" HeightRequest="50" WidthRequest="50"/>
+                    <Image x:Name="GlassBin" Source="glass_bin.png" Grid.Row="2" Grid.Column="2" HeightRequest="50" WidthRequest="50"/>
                     <!-- Recyclables -->
-                    <Image x:Name="PaperItem" Source="paper_item.png" Grid.Row="0" Grid.Column="0" HeightRequest="100" WidthRequest="100" Margin="0,20,0,0"/>
-                    <Image x:Name="PlasticItem" Source="plastic_item.png" Grid.Row="0" Grid.Column="1" HeightRequest="100" WidthRequest="100" Margin="20,20,20,0"/>
-                    <Image x:Name="GlassItem" Source="glass_item.png" Grid.Row="0" Grid.Column="2" HeightRequest="100" WidthRequest="100" Margin="0,20,0,0"/>
+                    <Image x:Name="PaperItem" Source="paper_item.png" Grid.Row="0" Grid.Column="0" HeightRequest="50" WidthRequest="50" Margin="0,20,0,0"/>
+                    <Image x:Name="PlasticItem" Source="plastic_item.png" Grid.Row="0" Grid.Column="1" HeightRequest="50" WidthRequest="50" Margin="20,20,20,0"/>
+                    <Image x:Name="GlassItem" Source="glass_item.png" Grid.Row="0" Grid.Column="2" HeightRequest="50" WidthRequest="50" Margin="0,20,0,0"/>
                 </Grid>
 
                 <!-- Reset Game Button -->
@@ -217,7 +227,7 @@
                    WidthRequest="100"
                    Margin="0,20,0,20" />
 
-                <Button Text="Grow Tree"
+                <Button Text="Water the tree"
                     Clicked="OnGrowTreeClicked"
                     Style="{StaticResource TreeButtonStyle}"
                     VerticalOptions="End" />

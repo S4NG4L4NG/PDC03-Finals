@@ -1,5 +1,7 @@
-﻿using Module06MVVM.View;
+﻿using Module06MVVM;
+using Module06MVVM.View;
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Module06MVVM
@@ -50,6 +52,7 @@ namespace Module06MVVM
 
             // Initialize quiz score
             QuizScoreLabel.Text = $"Score: {quizScore}";
+            UpdateQuizQuestion();
         }
 
         private async void OnButtonClicked(object sender, EventArgs e)
@@ -57,7 +60,7 @@ namespace Module06MVVM
             await Navigation.PushAsync(new ShowEmployeePage());
         }
 
-        private void OnQuizAnswerClicked(object sender, EventArgs e)
+        private async void OnQuizAnswerClicked(object sender, EventArgs e)
         {
             var button = sender as Button;
             if (button.Text == quizCorrectAnswers[quizQuestionIndex])
@@ -68,12 +71,46 @@ namespace Module06MVVM
             else
             {
                 QuizResultLabel.Text = "Try again!";
-                quizScore = 0; // Reset score on incorrect answer
             }
             QuizResultLabel.IsVisible = true;
             QuizScoreLabel.Text = $"Score: {quizScore}";
 
-            quizQuestionIndex = (quizQuestionIndex + 1) % quizQuestions.Length;
+            quizQuestionIndex++;
+
+            if (quizQuestionIndex < quizQuestions.Length)
+            {
+                UpdateQuizQuestion();
+            }
+            else
+            {
+                await DisplayQuizResult();
+            }
+        }
+
+        private async Task DisplayQuizResult()
+        {
+            string resultMessage;
+
+            if (quizScore == quizQuestions.Length)
+            {
+                resultMessage = "Congratulations! You got all answers correct!";
+            }
+            else if (quizScore >= 1)
+            {
+                resultMessage = "Better luck next time!";
+            }
+            else
+            {
+                resultMessage = "Try again.";
+            }
+
+            await DisplayAlert("Quiz Result", resultMessage, "OK");
+
+            // Reset quiz
+            quizScore = 0;
+            quizQuestionIndex = 0;
+            QuizScoreLabel.Text = $"Score: {quizScore}";
+            QuizResultLabel.IsVisible = false;
             UpdateQuizQuestion();
         }
 
@@ -163,3 +200,4 @@ namespace Module06MVVM
         }
     }
 }
+
